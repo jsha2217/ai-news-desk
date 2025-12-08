@@ -1,47 +1,54 @@
-package com.ainewsdesk.entity;
-
-import jakarta.persistence.*;
+package com.ainewsdesk.dto;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "users")
-public class User {
+/**
+ * 사용자 정보 응답 데이터 객체
+ */
+public class UserDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /**
+     * 사용자 ID
+     */
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    /**
+     * 사용자 이메일
+     */
     private String email;
 
-    @Column(nullable = false)
-    private String passwordHash;
-
-    @Column(length = 100)
+    /**
+     * 사용자명
+     */
     private String username;
 
-    @Column(nullable = false)
-    private Boolean verified = false;
+    /**
+     * 이메일 인증 여부
+     */
+    private Boolean verified;
 
-    @Column(nullable = false, updatable = false)
+    /**
+     * 생성 시간
+     */
     private LocalDateTime createdAt;
 
-    @Column(nullable = false)
+    /**
+     * 수정 시간
+     */
     private LocalDateTime updatedAt;
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
+    public UserDto() {
     }
 
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
+    public UserDto(Long id, String email, String username, Boolean verified, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.verified = verified;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -58,14 +65,6 @@ public class User {
         this.email = email;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -80,10 +79,6 @@ public class User {
 
     public void setVerified(Boolean verified) {
         this.verified = verified;
-    }
-
-    public Boolean isVerified() {
-        return verified;
     }
 
     public LocalDateTime getCreatedAt() {
