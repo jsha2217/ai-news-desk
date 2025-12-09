@@ -69,4 +69,28 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
             LocalDateTime endDateTime,
             Pageable pageable
     );
+
+    /**
+     * 특정 출처 유형의 기사 개수 조회
+     *
+     * @param sourceType 출처 유형 (OFFICIAL, PROFESSIONAL, GENERAL)
+     * @return 기사 개수
+     */
+    long countBySourceType(SourceType sourceType);
+
+    /**
+     * 특정 카테고리의 기사 개수 조회
+     *
+     * @param category 카테고리명
+     * @return 기사 개수
+     */
+    long countByCategory(String category);
+
+    /**
+     * URL 존재 여부 확인 (중복 체크용)
+     *
+     * @param url 기사 URL
+     * @return 존재 여부
+     */
+    boolean existsByUrl(String url);
 }

@@ -1,19 +1,10 @@
 package com.ainewsdesk.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
 
 /**
  * 뉴스 기사 정보 응답 데이터 객체
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class ArticleDto {
 
     /**
@@ -65,4 +56,102 @@ public class ArticleDto {
      * 크롤링 시간
      */
     private LocalDateTime crawledAt;
+
+    public ArticleDto() {
+    }
+
+    public ArticleDto(Long id, String title, String description, String url, String sourceName,
+                     String sourceType, String category, String thumbnailUrl,
+                     LocalDateTime publishedAt, LocalDateTime crawledAt) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.url = url;
+        this.sourceName = sourceName;
+        this.sourceType = sourceType;
+        this.category = category;
+        this.thumbnailUrl = thumbnailUrl;
+        this.publishedAt = publishedAt;
+        this.crawledAt = crawledAt;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getSourceName() {
+        return sourceName;
+    }
+
+    public void setSourceName(String sourceName) {
+        this.sourceName = sourceName;
+    }
+
+    public String getSourceType() {
+        return sourceType;
+    }
+
+    public void setSourceType(String sourceType) {
+        this.sourceType = sourceType;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
+    }
+
+    public LocalDateTime getPublishedAt() {
+        return publishedAt;
+    }
+
+    public void setPublishedAt(LocalDateTime publishedAt) {
+        this.publishedAt = publishedAt;
+    }
+
+    public LocalDateTime getCrawledAt() {
+        return crawledAt;
+    }
+
+    public void setCrawledAt(LocalDateTime crawledAt) {
+        this.crawledAt = crawledAt;
+    }
 }
