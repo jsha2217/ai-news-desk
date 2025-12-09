@@ -1,17 +1,8 @@
 package com.ainewsdesk.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 /**
  * 로그인 응답 데이터 객체
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class LoginResponse {
 
     /**
@@ -22,7 +13,6 @@ public class LoginResponse {
     /**
      * 토큰 타입 (기본값: "Bearer")
      */
-    @Builder.Default
     private String tokenType = "Bearer";
 
     /**
@@ -44,4 +34,64 @@ public class LoginResponse {
      * 토큰 만료 시간 (밀리초)
      */
     private Long expiresIn;
+
+    public LoginResponse() {
+    }
+
+    public LoginResponse(String token, String tokenType, Long userId, String email, String username, Long expiresIn) {
+        this.token = token;
+        this.tokenType = tokenType;
+        this.userId = userId;
+        this.email = email;
+        this.username = username;
+        this.expiresIn = expiresIn;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getTokenType() {
+        return tokenType;
+    }
+
+    public void setTokenType(String tokenType) {
+        this.tokenType = tokenType;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Long getExpiresIn() {
+        return expiresIn;
+    }
+
+    public void setExpiresIn(Long expiresIn) {
+        this.expiresIn = expiresIn;
+    }
 }
