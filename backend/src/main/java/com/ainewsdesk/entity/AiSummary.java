@@ -1,10 +1,6 @@
 package com.ainewsdesk.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -12,10 +8,6 @@ import java.time.LocalDateTime;
 @Table(name = "ai_summaries", indexes = {
     @Index(name = "idx_period_start", columnList = "summary_period_start DESC")
 })
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class AiSummary {
 
     @Id
@@ -43,7 +35,6 @@ public class AiSummary {
     @Column(name = "generated_at", nullable = false)
     private LocalDateTime generatedAt;
 
-    @Builder.Default
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private SummaryStatus status = SummaryStatus.DRAFT;
@@ -60,5 +51,105 @@ public class AiSummary {
     public enum SummaryStatus {
         DRAFT,      // 초안
         PUBLISHED   // 발행됨
+    }
+
+    // Constructors
+    public AiSummary() {
+    }
+
+    public AiSummary(Long id, LocalDateTime summaryPeriodStart, LocalDateTime summaryPeriodEnd,
+                    String title, String content, String keyHighlights, Integer relatedArticlesCount,
+                    LocalDateTime generatedAt, SummaryStatus status, LocalDateTime createdAt) {
+        this.id = id;
+        this.summaryPeriodStart = summaryPeriodStart;
+        this.summaryPeriodEnd = summaryPeriodEnd;
+        this.title = title;
+        this.content = content;
+        this.keyHighlights = keyHighlights;
+        this.relatedArticlesCount = relatedArticlesCount;
+        this.generatedAt = generatedAt;
+        this.status = status;
+        this.createdAt = createdAt;
+    }
+
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getSummaryPeriodStart() {
+        return summaryPeriodStart;
+    }
+
+    public void setSummaryPeriodStart(LocalDateTime summaryPeriodStart) {
+        this.summaryPeriodStart = summaryPeriodStart;
+    }
+
+    public LocalDateTime getSummaryPeriodEnd() {
+        return summaryPeriodEnd;
+    }
+
+    public void setSummaryPeriodEnd(LocalDateTime summaryPeriodEnd) {
+        this.summaryPeriodEnd = summaryPeriodEnd;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getKeyHighlights() {
+        return keyHighlights;
+    }
+
+    public void setKeyHighlights(String keyHighlights) {
+        this.keyHighlights = keyHighlights;
+    }
+
+    public Integer getRelatedArticlesCount() {
+        return relatedArticlesCount;
+    }
+
+    public void setRelatedArticlesCount(Integer relatedArticlesCount) {
+        this.relatedArticlesCount = relatedArticlesCount;
+    }
+
+    public LocalDateTime getGeneratedAt() {
+        return generatedAt;
+    }
+
+    public void setGeneratedAt(LocalDateTime generatedAt) {
+        this.generatedAt = generatedAt;
+    }
+
+    public SummaryStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(SummaryStatus status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }
