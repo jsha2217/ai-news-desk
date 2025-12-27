@@ -1,0 +1,38 @@
+# Build artifacts
+target/
+*.jar
+*.war
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Docs
+docs/
+*.md
+
+# Test
+src/test/
+
+# Properties (use environment variables instead)
+src/main/resources/application.properties
